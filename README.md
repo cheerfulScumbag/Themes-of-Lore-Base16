@@ -19,7 +19,7 @@ Explore the collection of themes below. Interactive previews are available from 
 
 ## Interactive Previews
 
-Browse interactive previews here: [docs/index.html](docs/index.html)
+Browse interactive previews here: [cheerfulscumbag.github.io/Themes-of-Lore-Base16](https://cheerfulscumbag.github.io/Themes-of-Lore-Base16/)
 
 ## How to Use
 
