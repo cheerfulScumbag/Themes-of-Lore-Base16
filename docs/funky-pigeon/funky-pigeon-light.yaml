@@ -1,0 +1,24 @@
+system: "base16"
+name: "Funky Pigeon Light"
+author: "cheerfulScumbag <@gmail.com>"
+variant: "light"
+palette:
+  # City Concrete (Bright Gray Backgrounds)
+  base00: "#f0f2f5" # bright concrete
+  base01: "#e0e3e8" # light pigeon gray
+  base02: "#c8ccd4" # muted blue-gray (selection)
+  base03: "#abb2bf" # pigeon feather gray (comments)
+  base04: "#565c64" # stormy gray
+  base05: "#3e4451" # dark slate (default text)
+  base06: "#23272e" # dark feather (dark text)
+  base07: "#1b1e23" # deepest storm gray
+  
+  # The Funky (Iridescent Accents) - Deepened for bright contrast
+  base08: "#dc4b4f" # Coral Red: Variables, Tags
+  base09: "#e94900" # Orange-Red: Numbers, Constants
+  base0A: "#f58606" # Yellow-Orange: Classes
+  base0B: "#72a85f" # Muted Green: Strings
+  base0C: "#229e99" # Deep Teal: Regex, Escapes
+  base0D: "#36a7a2" # Light Teal: Functions
+  base0E: "#c63333" # Darker Red: Keywords, Operators
+  base0F: "#dc4b4f" # Coral Red: Deprecated

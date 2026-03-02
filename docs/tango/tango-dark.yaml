@@ -1,0 +1,21 @@
+system: "base16"
+name: "Tango Dark"
+author: "cheerfulScumbag <@gmail.com>"
+variant: "dark"
+palette:
+  base00: "#17262D" # ---- dark
+  base01: "#1C2E37" # ---
+  base02: "#394B53" # --
+  base03: "#56676F" # -
+  base04: "#89959B" # +
+  base05: "#BCC3C7" # ++
+  base06: "#D6DADD" # +++
+  base07: "#EFF1F3" # ++++ light
+  base08: "#FF4000" # Blazing Flame - Variables, Tags
+  base09: "#FF7B00" # Bright Amber - Constants, Numbers
+  base0A: "#FFB733" # Bright Goldenrod - Classes
+  base0B: "#FBFF00" # Neon Yellow - Strings
+  base0C: "#FF2A55" # Neon Pinkish Red - Regex
+  base0D: "#FFDEB3" # White-Hot Peach (High Contrast Pop) - Functions
+  base0E: "#E60033" # Electric Crimson - Keywords
+  base0F: "#992600" # Dark Rust - Deprecated

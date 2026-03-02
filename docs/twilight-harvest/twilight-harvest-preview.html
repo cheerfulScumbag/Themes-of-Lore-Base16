@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base16 Theme Preview: Twilight Harvest</title>
+    <style>
+        :root {
+            /* Twilight Harvest Dark */
+            --dark-base00: #13232c;
+            --dark-base01: #1d323f;
+            --dark-base02: #233d4d;
+            --dark-base03: #455f71;
+            --dark-base04: #70899c;
+            --dark-base05: #a3b9c8;
+            --dark-base06: #dce6ed;
+            --dark-base07: #f0f5f9;
+            --dark-base08: #cc5200;
+            --dark-base09: #d9651c;
+            --dark-base0A: #e0ad1b;
+            --dark-base0B: #a1c181;
+            --dark-base0C: #7a9b5b;
+            --dark-base0D: #fcca46;
+            --dark-base0E: #c4cf4b;
+            --dark-base0F: #a63f00;
+
+            /* Twilight Harvest Light */
+            --light-base00: #f0f5f9;
+            --light-base01: #dce6ed;
+            --light-base02: #a3b9c8;
+            --light-base03: #70899c;
+            --light-base04: #455f71;
+            --light-base05: #233d4d;
+            --light-base06: #1d323f;
+            --light-base07: #13232c;
+            --light-base08: #a63f00;
+            --light-base09: #fe7f2d;
+            --light-base0A: #d9651c;
+            --light-base0B: #7a9b5b;
+            --light-base0C: #547535;
+            --light-base0D: #e0ad1b;
+            --light-base0E: #8d9921;
+            --light-base0F: #803000;
+
+            /* Current Defaults */
+            --base00: var(--dark-base00);
+            --base01: var(--dark-base01);
+            --base02: var(--dark-base02);
+            --base03: var(--dark-base03);
+            --base04: var(--dark-base04);
+            --base05: var(--dark-base05);
+            --base06: var(--dark-base06);
+            --base07: var(--dark-base07);
+            --base08: var(--dark-base08);
+            --base09: var(--dark-base09);
+            --base0A: var(--dark-base0A);
+            --base0B: var(--dark-base0B);
+            --base0C: var(--dark-base0C);
+            --base0D: var(--dark-base0D);
+            --base0E: var(--dark-base0E);
+            --base0F: var(--dark-base0F);
+        }
+
+        body {
+            background-color: var(--base00);
+            color: var(--base05);
+            font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1 {
+            color: var(--base0D);
+            margin-bottom: 10px;
+            font-weight: 300;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        .controls {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            background-color: var(--base01);
+            color: var(--base05);
+            border: 1px solid var(--base02);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: var(--base02);
+            color: var(--base07);
+        }
+
+        .window {
+            background-color: var(--base00);
+            border: 1px solid var(--base01);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(19, 35, 44, 0.9), 0 0 40px rgba(254, 127, 45, 0.05);
+            /* very soft orange storm glow */
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            transition: all 0.3s ease;
+        }
+
+        body.theme-light .window {
+            box-shadow: 0 20px 50px rgba(35, 61, 77, 0.2);
+        }
+
+        .titlebar {
+            background-color: var(--base02);
+            padding: 12px 18px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--base01);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .mac-btn {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+        }
+
+        .close {
+            background-color: var(--base08);
+        }
+
+        .min {
+            background-color: var(--base0A);
+        }
+
+        .max {
+            background-color: var(--base0B);
+        }
+
+        pre {
+            padding: 25px;
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .keyword {
+            color: var(--base0E);
+            font-weight: bold;
+        }
+
+        .function {
+            color: var(--base0D);
+        }
+
+        .string {
+            color: var(--base0B);
+        }
+
+        .number {
+            color: var(--base09);
+        }
+
+        .comment {
+            color: var(--base03);
+            font-style: italic;
+        }
+
+        .class {
+            color: var(--base0A);
+        }
+
+        .operator {
+            color: var(--base05);
+        }
+
+        .variable {
+            color: var(--base08);
+        }
+
+        .regex {
+            color: var(--base0C);
+        }
+
+        .property {
+            color: var(--base08);
+        }
+
+        .deprecated {
+            color: var(--base0F);
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body class="theme-dark">
+
+    <h1 id="theme-title">Twilight Harvest - The Brewing Storm</h1>
+    <div class="controls">
+        <button onclick="setTheme('dark')">Dark Theme</button>
+        <button onclick="setTheme('light')">Light Theme</button>
+    </div>
+
+    <div class="window">
+        <div class="titlebar">
+            <div class="mac-btn close"></div>
+            <div class="mac-btn min"></div>
+            <div class="mac-btn max"></div>
+        </div>
+        <pre><code><span class="comment"># Twilight Harvest - Almost late for the harvest, the rain is about to start...</span>
+<span class="keyword">import</span> sys
+<span class="keyword">from</span> forecast <span class="keyword">import</span> Storm
+
+<span class="keyword">class</span> <span class="class">AutumnField</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, pumpkins: <span class="class">int</span> = <span class="number">42</span>):
+        self.<span class="property">pumpkins</span> = pumpkins
+        self.<span class="property">is_raining</span> = <span class="number">False</span>
+        self.<span class="property">weather</span> = <span class="string">"Heavy clouds gathering"</span>
+
+    <span class="keyword">def</span> <span class="function">gather_crops</span>(self, urgency: <span class="class">str</span>) -> <span class="class">bool</span>:
+        <span class="comment"># We need to hurry before the storm breaks</span>
+        <span class="keyword">if</span> self.<span class="property">is_raining</span>:
+            <span class="keyword">return</span> <span class="number">False</span>
+
+        regex_pattern = <span class="regex">r"^thunder_\d+$"</span>
+        <span class="keyword">if</span> re.<span class="function">match</span>(regex_pattern, urgency):
+            <span class="class">print</span>(<span class="string">f"Warning: </span>{urgency}<span class="string"> detected. </span>{self.<span class="property">pumpkins</span>}<span class="string"> crops remaining!"</span>)
+            <span class="keyword">return</span> <span class="number">True</span>
+            
+        <span class="keyword">return</span> <span class="number">False</span>
+        
+    <span class="keyword">def</span> <span class="function">withered_vine</span>(self):
+        <span class="deprecated">return "This is Base0F"</span></code></pre>
+    </div>
+
+    <script>
+        function setTheme(theme) {
+            const root = document.documentElement;
+            document.body.className = `theme-${theme}`;
+
+            if (theme === 'light') {
+                document.getElementById('theme-title').innerText = "Twilight Harvest - Overcast Afternoon";
+                for (let i = 0; i < 16; i++) {
+                    let hex = i.toString(16).toUpperCase();
+                    root.style.setProperty(`--base0${hex}`, `var(--light-base0${hex})`);
+                }
+            } else {
+                document.getElementById('theme-title').innerText = "Twilight Harvest - The Brewing Storm";
+                for (let i = 0; i < 16; i++) {
+                    let hex = i.toString(16).toUpperCase();
+                    root.style.setProperty(`--base0${hex}`, `var(--dark-base0${hex})`);
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

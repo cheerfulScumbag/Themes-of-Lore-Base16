@@ -1,0 +1,24 @@
+system: "base16"
+name: "Burning Ocean Light"
+author: "cheerfulScumbag <@gmail.com>"
+variant: "light"
+palette:
+  # Bright Sunlit Water (Backgrounds)
+  base00: "#eaf5fa" # sea foam background
+  base01: "#8ecae6" # lightest ocean
+  base02: "#73bfdc" # light ocean (selection)
+  base03: "#58b4d1" # mid light (comments)
+  base04: "#219ebc" # mid ocean (light text)
+  base05: "#126782" # dark slate blue (default text)
+  base06: "#0a4c6a" # deep blue (dark text)
+  base07: "#023047" # deepest ocean (darkest text)
+  
+  # Deep Embers (Accents that pop on light background)
+  base08: "#bb3e03" # Rust Fire: Variables, Tags
+  base09: "#ae2012" # Deep Red: Numbers, Constants
+  base0A: "#fb8500" # Orange-Red: Classes
+  base0B: "#219ebc" # Mid Ocean Blue: Strings
+  base0C: "#126782" # Dark Slate Blue: Regex
+  base0D: "#9b2226" # Darkest Red: Functions
+  base0E: "#fb8500" # Orange-Red: Keywords, Operators
+  base0F: "#ae2012" # Deep Red: Deprecated

@@ -1,0 +1,24 @@
+system: "base16"
+name: "Taste of Italy Light"
+author: "cheerfulScumbag <@gmail.com>"
+variant: "light"
+palette:
+  # The Marble Table (Crisp Whites & Creams)
+  base00: "#ffffff" # Pure White background
+  base01: "#ffebeb" # Soft White with red tint
+  base02: "#ecffeb" # Mint White (selection background)
+  base03: "#ba0c0c" # Bright Tomato Red (comments - legible on white)
+  base04: "#751717" # Brick Red
+  base05: "#3b0808" # Deepest Red (default text)
+  base06: "#240000" # Very Dark Red/Brown (dark text)
+  base07: "#005c00" # Deep Pesto Green (darkest text)
+  
+  # The Pomodoro & Pesto (Deepened Italian Flag Accents)
+  base08: "#ff0000" # Pure Red: Variables, Tags
+  base09: "#ba0c0c" # Bright Tomato Red: Numbers, Constants
+  base0A: "#2a850e" # Olive Green: Classes
+  base0B: "#27a300" # Basil Green: Strings
+  base0C: "#2d661b" # Murky Green: Regex, Escapes
+  base0D: "#5c0000" # Wine Red: Functions
+  base0E: "#005c00" # Deep Pesto Green: Keywords, Operators
+  base0F: "#751717" # Brick Red: Deprecated

@@ -1,0 +1,24 @@
+system: "base16"
+name: "Natures Power Dark"
+author: "cheerfulScumbag <@gmail.com>"
+variant: "dark"
+palette:
+  # The Dark Forest Floor (Deep Mud, Roots, Pale Bone Light)
+  base00: "#140c09" # Pitch black mud
+  base01: "#2a1913" # Dark earth
+  base02: "#43291f" # Deep earthy brown (User provided - Selection)
+  base03: "#5e3f32" # Dried mud (Comments)
+  base04: "#805b4b" # Twisted roots
+  base05: "#b39a8c" # Pale dead wood (Default text)
+  base06: "#d6c8bd" # White birch bark (Light text)
+  base07: "#f4f0bb" # Pale eerie moon/bone (User provided - Lightest text)
+  
+  # The Folklore (Frightening Flora & Blood)
+  base08: "#da2c38" # Eerie Crimson / Blood (User provided - Variables, Tags)
+  base09: "#f26457" # Bright poisonous berry (Numbers, Constants)
+  base0A: "#ccb147" # Glowing yellow fungi (Classes)
+  base0B: "#87c38f" # Pale Ghostly Lichen (User provided - Strings)
+  base0C: "#226f54" # Deep Forest Green (User provided - Regex, Escapes)
+  base0D: "#ab3f46" # Dried blood red / Ritual marks (Functions)
+  base0E: "#a0cfa5" # Brightened Lichen/Mint (Keywords, Operators)
+  base0F: "#6b2f28" # Rotting autumn leaf (Deprecated)

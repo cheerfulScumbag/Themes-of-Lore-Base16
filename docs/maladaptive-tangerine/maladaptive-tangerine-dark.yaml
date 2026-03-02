@@ -1,0 +1,24 @@
+system: "base16"
+name: "Maladaptive Tangerine Dark"
+author: "cheerfulScumbag <@gmail.com>"
+variant: "dark"
+palette:
+  # The Night Terrors (Deep Island Shadows Backgrounds)
+  base00: "#001219" # darkest nightmare pitch
+  base01: "#005f73" # deep ominous teal
+  base02: "#0a9396" # sickly jungle water (selection)
+  base03: "#126782" # dark slate tropical blue (comments)
+  base04: "#219ebc" # mid ocean blue
+  base05: "#58b4d1" # light unnatural blue (default text)
+  base06: "#73bfdc" # glowing water (light text)
+  base07: "#8ecae6" # pale moonlit foam
+  
+  # The Maladaptive Tangerines (Nervous, Feverish Accents)
+  base08: "#9b2226" # Deep Blood Red: Variables, Tags
+  base09: "#bb3e03" # Rust Orange: Numbers, Constants
+  base0A: "#ca6702" # Sickly Burned Orange: Classes
+  base0B: "#94d2bd" # Pale Poison Green: Strings
+  base0C: "#e9d8a6" # Jaundiced Yellow: Regex, Escapes
+  base0D: "#ee9b00" # Feverish Tangerine: Functions
+  base0E: "#fb8500" # Screaming Orange: Keywords, Operators
+  base0F: "#ae2012" # Dried Blood: Deprecated

@@ -1,0 +1,24 @@
+system: "base16"
+name: "Twilight Harvest Dark"
+author: "cheerfulScumbag <@gmail.com>"
+variant: "dark"
+palette:
+  # The Approaching Storm (Deep, Heavy Blues and Greens)
+  base00: "#13232c" # darker than #233d4d - the shadow under the clouds
+  base01: "#1d323f" # deep storm gray/blue
+  base02: "#233d4d" # The brewing storm (User's provided deep blue)
+  base03: "#455f71" # muted slate (comments)
+  base04: "#70899c" # lighter rain gray 
+  base05: "#a3b9c8" # default text (light overcast sky)
+  base06: "#dce6ed" # pale gray (light text)
+  base07: "#f0f5f9" # almost white lightning flash
+  
+  # The Harvest (Glowing Oranges, Yellows, and Sage)
+  base08: "#cc5200" # Deep Roasted Pumpkin (Variables, Tags)
+  base09: "#d9651c" # Burnt Orange (Numbers/Constants)
+  base0A: "#e0ad1b" # Deep Wheat (Classes)
+  base0B: "#a1c181" # Sage / Autumn Leaves (User's provided green - Strings)
+  base0C: "#7a9b5b" # Darker Sage (Regex, Escapes)
+  base0D: "#fcca46" # Golden Wheat / Twilight Glare (User's provided yellow - Functions)
+  base0E: "#c4cf4b" # Golden Sunlit Green (Last hope of summer leaves! Keywords, Operators)
+  base0F: "#a63f00" # Dead Leaves (Deprecated)

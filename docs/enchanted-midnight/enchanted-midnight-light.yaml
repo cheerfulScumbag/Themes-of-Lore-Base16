@@ -1,0 +1,24 @@
+system: "base16"
+name: "Enchanted Midnight Light"
+author: "cheerfulScumbag <@gmail.com>"
+variant: "light"
+palette:
+  # The Calm Pale Sky Above the Cliff
+  base00: "#f2e6fa" # pale luminous sky
+  base01: "#d1b3e8" # soft lavender clouds
+  base02: "#a37ac3" # deepened twilight (selection)
+  base03: "#75008b" # bright purple sky (comments)
+  base04: "#5c008b" # deep purple (user provided)
+  base05: "#450074" # dark twilight (default text)
+  base06: "#2e005d" # deep deep purple sky (user provided - dark text)
+  base07: "#180034" # infinite abyss (darkest text)
+  
+  # The Calm View From the Cliff (Deepened for contrast)
+  base08: "#c7004f" # Deep Pink/Magenta (Variables, Tags)
+  base09: "#ff6200" # Deep burning horizon (User provided - Numbers, Constants)
+  base0A: "#ff8300" # Glowing sunset ember (User provided - Classes)
+  base0B: "#215942" # Dark enchanted pine (Strings)
+  base0C: "#2a7d85" # Deep river water (Regex)
+  base0D: "#8e008b" # Magenta forest shadows (User provided - Functions)
+  base0E: "#d61c51" # Darkened pink sunset (Keywords, Operators)
+  base0F: "#a61919" # Distant dying light (Deprecated)
