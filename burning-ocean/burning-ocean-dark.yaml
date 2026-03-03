@@ -3,22 +3,19 @@ name: "Burning Ocean Dark"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "dark"
 palette:
-  # The Ocean Depth (Backgrounds)
-  base00: "#023047" # deepest ocean
-  base01: "#0a4c6a" # deep blue
-  base02: "#126782" # dark slate blue (selection)
-  base03: "#219ebc" # mid ocean (comments)
-  base04: "#58b4d1" # light mid (dark text)
-  base05: "#73bfdc" # light ocean (default text)
-  base06: "#8ecae6" # lightest ocean (light text)
-  base07: "#d5f2ff" # foam (lightest text/background highlight)
-  
-  # The Fire (Accents)
-  base08: "#fb8500" # Orange-Red: Variables, Tags
-  base09: "#fd9e02" # Bright Orange: Numbers, Constants
-  base0A: "#ffb703" # Golden Yellow: Classes
-  base0B: "#8ecae6" # Foam Cyan: Strings (Water contrast!)
-  base0C: "#fb9017" # Orange: Regex, Escapes
-  base0D: "#ffb703" # Golden Yellow: Functions
-  base0E: "#bb3e03" # Rust Fire: Keywords, Operators
-  base0F: "#9b2226" # Dark Red: Deprecated
+  base00: "#023047"
+  base01: "#0a4c6a"
+  base02: "#126782"
+  base03: "#219ebc"
+  base04: "#58b4d1"
+  base05: "#73bfdc"
+  base06: "#8ecae6"
+  base07: "#d5f2ff"
+  base08: "#fb8500"
+  base09: "#fd9e02"
+  base0A: "#ffb703"
+  base0B: "#8ecae6"
+  base0C: "#fb9017"
+  base0D: "#ffb703"
+  base0E: "#bb3e03"
+  base0F: "#9b2226"

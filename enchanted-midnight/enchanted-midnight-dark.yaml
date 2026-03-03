@@ -3,22 +3,19 @@ name: "Enchanted Midnight Dark"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "dark"
 palette:
-  # The Deep, Deep Purple Sky at the Edge of the World
-  base00: "#180034" # darker than #2e005d - the infinite abyss
-  base01: "#2e005d" # deep deep purple sky (user provided)
-  base02: "#450074" # twilight purple (selection)
-  base03: "#5c008b" # lighter sky (user provided - comments)
-  base04: "#75008b" # twilight mist
-  base05: "#a37ac3" # pale starlight (default text)
-  base06: "#d1b3e8" # bright starlight
-  base07: "#f2e6fa" # pure moon/star white
-  
-  # The Calm View From the Cliff
-  base08: "#8e008b" # Magenta forest shadows (User provided - Variables, Tags)
-  base09: "#ff6200" # Deep burning horizon (User provided - Numbers, Constants)
-  base0A: "#ff8300" # Glowing sunset ember (User provided - Classes)
-  base0B: "#327a5d" # Enchanted pine forest below (Strings)
-  base0C: "#369ba3" # Crystalline river reflecting the sky (Regex)
-  base0D: "#bf75d6" # Calm twilight lavender (Functions)
-  base0E: "#f0567a" # Fading pink sunset (Keywords, Operators)
-  base0F: "#d62828" # Distant dying light (Deprecated)
+  base00: "#180034"
+  base01: "#2e005d"
+  base02: "#450074"
+  base03: "#5c008b"
+  base04: "#75008b"
+  base05: "#a37ac3"
+  base06: "#d1b3e8"
+  base07: "#f2e6fa"
+  base08: "#8e008b"
+  base09: "#ff6200"
+  base0A: "#ff8300"
+  base0B: "#327a5d"
+  base0C: "#369ba3"
+  base0D: "#bf75d6"
+  base0E: "#f0567a"
+  base0F: "#d62828"

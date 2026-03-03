@@ -3,20 +3,19 @@ name: "Tango Light"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "light"
 palette:
-  base00: "#F5F7F8" # ---- light background (metallic silver/white)
-  base01: "#E4E9EC" # ---
-  base02: "#D6DADD" # --
-  base03: "#BCC3C7" # -
-  base04: "#89959B" # +
-  base05: "#56676F" # ++
-  base06: "#394B53" # +++
-  base07: "#17262D" # ++++ dark text
-  # Using slightly deepened warm accents so they read clearly on a bright white/silver background
-  base08: "#D92600" # Deep Fire Red - Variables, Tags
-  base09: "#CC5200" # Burnt Orange - Constants, Numbers
-  base0A: "#B37700" # Deep Goldenrod - Classes
-  base0B: "#999900" # Olive/Brass Yellow - Strings
-  base0C: "#D91640" # Deep Rose Red - Regex
-  base0D: "#C96D28" # Deep Copper Peach - Functions
-  base0E: "#B30027" # Dark Crimson - Keywords
-  base0F: "#801C00" # Dark Iron Rust - Deprecated
+  base00: "#F5F7F8"
+  base01: "#E4E9EC"
+  base02: "#D6DADD"
+  base03: "#BCC3C7"
+  base04: "#89959B"
+  base05: "#56676F"
+  base06: "#394B53"
+  base07: "#17262D"
+  base08: "#D92600"
+  base09: "#CC5200"
+  base0A: "#B37700"
+  base0B: "#999900"
+  base0C: "#D91640"
+  base0D: "#C96D28"
+  base0E: "#B30027"
+  base0F: "#801C00"

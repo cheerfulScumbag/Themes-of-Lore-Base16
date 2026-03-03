@@ -3,22 +3,19 @@ name: "Green Tea & Cheesecakes Light"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "light"
 palette:
-  # The Morning After (Soft, Warm Creams)
-  base00: "#fdf8f5" # Warm cream / cheesecake center
-  base01: "#f2ece6" # Baked top
-  base02: "#e0d7cf" # Muted biscuit (selection)
-  base03: "#aab1c7" # Soft ambient shadow (comments)
-  base04: "#777da7" # Night sky / Twilight purple (user provided - dark text)
-  base05: "#4b516e" # Deep slate (default text)
-  base06: "#252839" # Dimly lit corner (dark text)
-  base07: "#1a1c29" # Dark midnight room (darkest text)
-  
-  # The Cuppa and the Cake (Deepened for contrast on cream)
-  base08: "#d63b31" # Deep Strawberry Jam (Variables, Tags)
-  base09: "#b34e47" # Terracotta mug (Numbers, Constants)
-  base0A: "#b87c35" # Dark baked crust (Classes)
-  base0B: "#51936b" # Steeped green tea leaves (Strings)
-  base0C: "#367d54" # Deep matcha powder (Regex)
-  base0D: "#fe5f55" # Strawberry Jam / Rose Tea (user provided - Functions)
-  base0E: "#777da7" # Twilight Purple (user provided - Keywords, Operators)
-  base0F: "#8f332c" # Dried rose petals (Deprecated)
+  base00: "#fdf8f5"
+  base01: "#f2ece6"
+  base02: "#e0d7cf"
+  base03: "#aab1c7"
+  base04: "#777da7"
+  base05: "#4b516e"
+  base06: "#252839"
+  base07: "#1a1c29"
+  base08: "#d63b31"
+  base09: "#b34e47"
+  base0A: "#b87c35"
+  base0B: "#51936b"
+  base0C: "#367d54"
+  base0D: "#fe5f55"
+  base0E: "#777da7"
+  base0F: "#8f332c"

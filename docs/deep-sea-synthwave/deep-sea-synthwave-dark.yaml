@@ -3,19 +3,19 @@ name: "Deep Sea Synthwave"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "dark"
 palette:
-  base00: "#040420" # darkest: Prussian blue
-  base01: "#0a0a33" # deep indigo
-  base02: "#161646" # dark violet-blue
-  base03: "#323266" # muted violet (comments, invisible text)
-  base04: "#5b5b8e" # slate violet
-  base05: "#8e8eb2" # default foreground
-  base06: "#c5c5df" # light foreground
-  base07: "#f3f3ff" # lightest: Lavender mist
-  base08: "#F95786" # Hot Pink / Magenta-Red (Variables)
-  base09: "#FF8E60" # Soft Coral Orange (Numbers)
-  base0A: "#F3E37C" # Soft Sun Yellow (Classes)
-  base0B: "#09BC8A" # Mint Green (Strings)
-  base0C: "#36DCDC" # Bright Turquoise / Cyan (Regex)
-  base0D: "#74B3CE" # Soft Blue (Functions)
-  base0E: "#B677D6" # Bright Lavender Purple (Keywords)
-  base0F: "#E58CB6" # Soft Rose (Deprecated)
+  base00: "#040420"
+  base01: "#0a0a33"
+  base02: "#161646"
+  base03: "#323266"
+  base04: "#5b5b8e"
+  base05: "#8e8eb2"
+  base06: "#c5c5df"
+  base07: "#f3f3ff"
+  base08: "#F95786"
+  base09: "#FF8E60"
+  base0A: "#F3E37C"
+  base0B: "#09BC8A"
+  base0C: "#36DCDC"
+  base0D: "#74B3CE"
+  base0E: "#B677D6"
+  base0F: "#E58CB6"

@@ -3,22 +3,19 @@ name: "Green Tea & Cheesecakes Dark"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "dark"
 palette:
-  # The Quiet Night (Deep, Soft Purples/Slates)
-  base00: "#1a1c29" # Dark midnight room
-  base01: "#252839" # Dimly lit corner
-  base02: "#33374d" # Muted slate (selection)
-  base03: "#4b516e" # Quiet night sky (comments)
-  base04: "#777da7" # Night sky / Twilight purple (user provided - dark text)
-  base05: "#aab1c7" # Soft ambient light (default text)
-  base06: "#dcdfea" # Moonlight on the cup (light text)
-  base07: "#f2f3f7" # Glowing steam (lightest text)
-  
-  # The Cuppa and the Cake (Warm, Comforting Pastels)
-  base08: "#fe5f55" # Strawberry Jam / Rose Tea (user provided - Variables, Tags)
-  base09: "#e8806a" # Warm terracotta mug (Numbers, Constants)
-  base0A: "#e8b87d" # Baked Cheesecake crust (Classes)
-  base0B: "#94c9a9" # Steeping Green Tea (user provided - Strings)
-  base0C: "#6fb58b" # Deep matcha (Regex)
-  base0D: "#c6e0ae" # Sweet Pistachio Cream (user provided slightly invalid c6eae fixed - Functions)
-  base0E: "#777da7" # Twilight Purple (user provided - Keywords, Operators)
-  base0F: "#b34e47" # Dried rose petals (Deprecated)
+  base00: "#1a1c29"
+  base01: "#252839"
+  base02: "#33374d"
+  base03: "#4b516e"
+  base04: "#777da7"
+  base05: "#aab1c7"
+  base06: "#dcdfea"
+  base07: "#f2f3f7"
+  base08: "#fe5f55"
+  base09: "#e8806a"
+  base0A: "#e8b87d"
+  base0B: "#94c9a9"
+  base0C: "#6fb58b"
+  base0D: "#c6e0ae"
+  base0E: "#777da7"
+  base0F: "#b34e47"

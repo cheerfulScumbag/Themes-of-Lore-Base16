@@ -3,21 +3,19 @@ name: "Deep Sea Light"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "light"
 palette:
-  base00: "#F3F3FF" # lightest: Lavender mist (Background)
-  base01: "#E8E8F7" # pale lavender (Secondary Background)
-  base02: "#C5C5DF" # light violet-gray (Selection Background)
-  base03: "#8E8EB2" # slate violet (Comments)
-  base04: "#5B5B8E" # slate violet (Status Bar, etc)
-  base05: "#323266" # muted violet (Default Text)
-  base06: "#161646" # dark violet-blue (Darker Text)
-  base07: "#040420" # darkest: Prussian blue (Darkest Text / Cursor)
-  
-  # Deepened synthetic accents for high contrast on light background
-  base08: "#D91E5B" # Deep Crimson / Pink (Variables)
-  base09: "#D35222" # Burnt Coral Orange (Numbers)
-  base0A: "#B39700" # Bronze / Antique Gold (Classes)
-  base0B: "#058864" # Jade / Deep Sea Green (Strings)
-  base0C: "#05A1A1" # Rich Teal / Deep Turquoise (Regex)
-  base0D: "#2D7BAB" # Ocean Blue (Functions)
-  base0E: "#8F49B3" # Deep Rich Violet (Keywords)
-  base0F: "#B34D7E" # Dark Mauve / Rose (Deprecated)
+  base00: "#F3F3FF"
+  base01: "#E8E8F7"
+  base02: "#C5C5DF"
+  base03: "#8E8EB2"
+  base04: "#5B5B8E"
+  base05: "#323266"
+  base06: "#161646"
+  base07: "#040420"
+  base08: "#D91E5B"
+  base09: "#D35222"
+  base0A: "#B39700"
+  base0B: "#058864"
+  base0C: "#05A1A1"
+  base0D: "#2D7BAB"
+  base0E: "#8F49B3"
+  base0F: "#B34D7E"

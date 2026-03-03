@@ -3,22 +3,19 @@ name: "Taste of Italy Dark"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "dark"
 palette:
-  # The Dark Vineyards (Deep Reds & Subtle Greens)
-  base00: "#240000" # Very Dark Red/Brown background
-  base01: "#3b0808" # Deepest Red
-  base02: "#5c0000" # Wine Red (selection background)
-  base03: "#751717" # Brick Red (comments)
-  base04: "#ba0c0c" # Bright Tomato Red
-  base05: "#ffebeb" # Soft White (default text)
-  base06: "#ecffeb" # Light Mint White (light text)
-  base07: "#ffffff" # Pure White (lightest text)
-  
-  # The Antipasto (Vibrant Italian Flag Accents)
-  base08: "#ff0000" # Pure Red: Variables, Tags
-  base09: "#ba0c0c" # Bright Tomato Red: Numbers, Constants
-  base0A: "#2a850e" # Olive Green: Classes
-  base0B: "#27a300" # Basil Green: Strings
-  base0C: "#ecffeb" # Mint White: Regex, Escapes
-  base0D: "#ffebeb" # Soft White: Functions (Stand out clearly against red background)
-  base0E: "#005c00" # Deep Pesto Green: Keywords, Operators
-  base0F: "#2d661b" # Murky Green: Deprecated
+  base00: "#240000"
+  base01: "#3b0808"
+  base02: "#5c0000"
+  base03: "#751717"
+  base04: "#ba0c0c"
+  base05: "#ffebeb"
+  base06: "#ecffeb"
+  base07: "#ffffff"
+  base08: "#ff0000"
+  base09: "#ba0c0c"
+  base0A: "#2a850e"
+  base0B: "#27a300"
+  base0C: "#ecffeb"
+  base0D: "#ffebeb"
+  base0E: "#005c00"
+  base0F: "#2d661b"

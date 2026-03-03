@@ -3,22 +3,19 @@ name: "Natures Power Light"
 author: "cheerfulScumbag <@gmail.com>"
 variant: "light"
 palette:
-  # The Eerie Bone Forest (Pale Yellow Fog and Shadows)
-  base00: "#f4f0bb" # Pale eerie moon/bone (User provided - Background)
-  base01: "#e8e4ae" # Slightly darker bone/moonlight
-  base02: "#d1cba1" # Muted pale yellow (Selection)
-  base03: "#b39a8c" # Pale dead wood (Comments)
-  base04: "#805b4b" # Twisted roots
-  base05: "#43291f" # Deep earthy brown (User provided - Default text)
-  base06: "#2a1913" # Dark earth (Dark text)
-  base07: "#140c09" # Pitch black mud (Darkest text)
-  
-  # The Folklore (Deepened Flora & Dried Blood for contrast)
-  base08: "#b31b25" # Dark Blood Red (Variables, Tags)
-  base09: "#da2c38" # Eerie Crimson / Blood (User provided - Numbers, Constants)
-  base0A: "#a1841e" # Dark Gold Fungi (Classes)
-  base0B: "#3a8a6b" # Darkened Lichen / Mid Forest (Strings)
-  base0C: "#4fa86b" # Brighter Forest (Regex, Escapes)
-  base0D: "#822931" # Dried ritual blood (Functions)
-  base0E: "#226f54" # Deep Forest Green (User provided - Keywords, Operators)
-  base0F: "#43291f" # Deep dirt (Deprecated)
+  base00: "#f4f0bb"
+  base01: "#e8e4ae"
+  base02: "#d1cba1"
+  base03: "#b39a8c"
+  base04: "#805b4b"
+  base05: "#43291f"
+  base06: "#2a1913"
+  base07: "#140c09"
+  base08: "#b31b25"
+  base09: "#da2c38"
+  base0A: "#a1841e"
+  base0B: "#3a8a6b"
+  base0C: "#4fa86b"
+  base0D: "#822931"
+  base0E: "#226f54"
+  base0F: "#43291f"
