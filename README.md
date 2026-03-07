@@ -1,29 +1,16 @@
 # Themes of Lore (Base16)
 
-A collection of custom Base16 themes inspired by nature. Each theme includes dark and light variants.
+A collection of custom Base16 themes inspired by nature and the elements.
 
-## Available Themes
+## Interactive Tools
 
-Explore the collection of themes below. Interactive previews are available from the documentation page (link below).
-
-* Burning Ocean — [Preview](docs/burning-ocean/burning-ocean-preview.html)
-* Deep Sea Synthwave — [Preview](docs/deep-sea-synthwave/deep-sea-synthwave-preview.html)
-* Enchanted Midnight — [Preview](docs/enchanted-midnight/enchanted-midnight-preview.html)
-* Funky Pigeon — [Preview](docs/funky-pigeon/funky-pigeon-preview.html)
-* Green Tea & Cheesecake — [Preview](docs/green-tea-cheesecake/green-tea-cheesecake-preview.html)
-* Maladaptive Tangerine — [Preview](docs/maladaptive-tangerine/maladaptive-tangerine-preview.html)
-* Nature's Power — [Preview](docs/natures-power/natures-power-preview.html)
-* Tango — [Preview](docs/tango/tango-preview.html)
-* Taste of Italy — [Preview](docs/taste-of-italy/taste-of-italy-preview.html)
-* Twilight Harvest — [Preview](docs/twilight-harvest/twilight-harvest-preview.html)
-
-## Interactive Previews
-
-Browse interactive previews here: [cheerfulscumbag.github.io/Themes-of-Lore-Base16](https://cheerfulscumbag.github.io/Themes-of-Lore-Base16/)
+* **[Theme Creator](https://cheerfulscumbag.github.io/Base16-Theme-Generator/docs/index.html)** — A live tool to design, preview, and export your own custom Base16 color schemes.
+* **[Theme Examples](https://cheerfulscumbag.github.io/Base16-Theme-Generator/docs/themes/index.html)** — Browse the collection of pre-made themes with interactive previews.
 
 ## How to Use
 
-Each directory contains:
+The repository contains theme definitions in the root and in the `docs/themes` directory. Each theme project includes:
+
 - `[theme-name]-dark.yaml` (Base16 Dark Scheme)
 - `[theme-name]-light.yaml` (Base16 Light Scheme)
 - `[theme-name]-preview.html` (Interactive HTML visualizer)
