@@ -1,6 +1,6 @@
-# Themes of Lore (Base16)
+# Base16Theme Generator
 
-A collection of custom Base16 themes inspired by nature and the elements.
+A tool to generate custom Base16 themes. and a collection of custom Base16 themes inspired by nature and the elements.
 
 ## Interactive Tools
 
@@ -9,10 +9,10 @@ A collection of custom Base16 themes inspired by nature and the elements.
 
 ## How to Use
 
-The repository contains theme definitions in the root and in the `docs/themes` directory. Each theme project includes:
+The repository contains pre-madethemes each theme project includes:
 
 - `[theme-name]-dark.yaml` (Base16 Dark Scheme)
 - `[theme-name]-light.yaml` (Base16 Light Scheme)
 - `[theme-name]-preview.html` (Interactive HTML visualizer)
 
-These schemes can be used with any Base16 builder to generate themes for your favorite applications (terminals, editors, UI elements).
+These schemes can be used with any of your favorite applications (terminals, editors, UI elements).
