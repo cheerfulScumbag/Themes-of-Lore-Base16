@@ -111,11 +111,12 @@
            ═══════════════════════════════════════════ */
         .app-main {
             display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 28px;
-            max-width: 1260px;
+            grid-template-columns: minmax(700px, 820px) minmax(280px, 360px);
+            gap: 22px;
+            justify-content: center;
+            max-width: 1240px;
             margin: 0 auto;
-            padding: 28px 24px 60px;
+            padding: 20px 20px 48px;
         }
 
         @media (max-width: 960px) {
@@ -123,6 +124,13 @@
                 grid-template-columns: 1fr;
                 max-width: 720px;
             }
+        }
+
+        .controls-column,
+        .preview-column {
+            display: grid;
+            gap: 16px;
+            align-content: start;
         }
 
         /* ═══════════════════════════════════════════
@@ -210,127 +218,405 @@
         }
 
         /* ═══════════════════════════════════════════
-           Left Panel — Color Grid
+           Left Panel — Palette Workbench
            ═══════════════════════════════════════════ */
-        .color-grid {
+        .palette-workbench {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 14px;
         }
 
-        .color-cell {
+        .palette-top-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.85fr);
+            gap: 14px;
+            align-items: start;
+        }
+
+        .base-slot-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .base-slot {
+            position: relative;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 4px 8px;
-            background: var(--app-surface-2);
-            border: 1px solid var(--app-border);
+            padding: 10px 10px 9px;
             border-radius: var(--app-radius-sm);
+            border: 1px solid var(--app-border);
+            background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface-2) 88%, transparent), var(--app-surface));
+            cursor: pointer;
             transition: border-color var(--app-transition), transform var(--app-transition), box-shadow var(--app-transition);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .color-cell:hover {
-            border-color: var(--app-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .color-cell .color-label {
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--app-text-dim);
-        }
-
-        .color-cell .color-role {
-            font-size: 8px;
-            color: var(--app-text-dim);
-            opacity: 0.7;
-            text-align: center;
-            line-height: 1.2;
-            min-height: 10px;
-        }
-
-        .color-cell input[type="color"] {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 44px;
-            height: 44px;
-            border: 2px solid var(--app-border);
-            border-radius: 50%;
-            cursor: pointer;
-            padding: 0;
+            text-align: left;
+            outline: none;
+            aspect-ratio: 0.83;
+            min-height: 0;
             overflow: hidden;
-            transition: border-color var(--app-transition), box-shadow var(--app-transition);
         }
 
-        .color-cell input[type="color"]::-webkit-color-swatch-wrapper {
-            padding: 0;
-        }
-
-        .color-cell input[type="color"]::-webkit-color-swatch {
-            border: none;
-            border-radius: 50%;
-        }
-
-        .color-cell input[type="color"]::-moz-color-swatch {
-            border: none;
-            border-radius: 50%;
-        }
-
-        .color-cell input[type="color"]:hover {
+        .base-slot:hover {
             border-color: var(--app-accent);
-            box-shadow: 0 0 12px var(--app-accent-glow);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
         }
 
-        .color-cell .hex-display {
-            font-family: var(--font-mono);
+        .base-slot.active {
+            border-color: var(--app-accent);
+            box-shadow: 0 0 0 3px var(--app-accent-glow);
+        }
+
+        .base-slot:focus-visible {
+            border-color: var(--app-accent);
+            box-shadow: 0 0 0 3px var(--app-accent-glow);
+        }
+
+        .base-slot.locked {
+            border-color: color-mix(in srgb, var(--app-accent) 55%, var(--app-border));
+            background: linear-gradient(180deg, color-mix(in srgb, var(--app-accent-glow) 65%, var(--app-surface-2)), var(--app-surface));
+        }
+
+        .base-slot-swatch {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: none;
+            margin-bottom: 0;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .base-slot-key {
+            position: relative;
+            display: block;
             font-size: 10px;
-            color: var(--app-text);
-            letter-spacing: 0.5px;
-            user-select: all;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            color: var(--slot-text-muted, rgba(255, 255, 255, 0.78));
+        }
+
+        .base-slot-role {
+            position: relative;
+            display: block;
+            font-size: 10px;
+            color: var(--slot-text, rgba(255, 255, 255, 0.94));
+            margin-top: 2px;
+            min-height: 0;
+            line-height: 1.25;
+        }
+
+        .base-slot-hex {
+            position: relative;
+            display: inline-flex;
+            margin-top: 6px;
+            padding: 2px 6px;
+            border-radius: 999px;
+            background: var(--slot-pill-bg, rgba(0, 0, 0, 0.38));
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: var(--slot-pill-text, #fff);
+        }
+
+        .base-slot-meta {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            padding: 10px 12px 12px;
+            background: var(--slot-meta-gradient, linear-gradient(180deg, rgba(8, 10, 14, 0) 0%, rgba(8, 10, 14, 0.42) 28%, rgba(8, 10, 14, 0.86) 100%));
+        }
+
+        .base-slot-top {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            min-height: 30px;
+        }
+
+        .base-slot-middle {
+            align-self: center;
+            display: grid;
+            gap: 2px;
+            max-width: 78%;
+        }
+
+        .base-slot-bottom {
+            align-self: start;
         }
 
         .lock-toggle {
             position: absolute;
-            top: 4px;
-            right: 4px;
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            border: 1px solid transparent;
-            background: transparent;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            border: 1px solid var(--app-border);
+            background: rgba(0, 0, 0, 0.22);
             color: var(--app-text-dim);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all var(--app-transition);
-            opacity: 0.4;
             z-index: 2;
         }
 
-        .color-cell:hover .lock-toggle,
-        .lock-toggle.active {
-            opacity: 1;
-        }
-
         .lock-toggle:hover {
-            background: var(--app-surface);
-            border-color: var(--app-border);
+            border-color: var(--app-accent);
+            color: var(--app-text-bright);
         }
 
         .lock-toggle.active {
-            color: var(--app-accent);
+            background: var(--app-accent);
+            border-color: var(--app-accent);
+            color: #fff;
+            box-shadow: 0 0 0 3px var(--app-accent-glow);
         }
 
         .lock-toggle svg {
-            width: 12px;
-            height: 12px;
+            width: 13px;
+            height: 13px;
+        }
+
+        .lock-badge {
+            position: absolute;
+            left: 12px;
+            top: 46px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.34);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-2px);
+            transition: opacity var(--app-transition), transform var(--app-transition);
+        }
+
+        .base-slot.locked .lock-badge {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .selected-color-panel {
+            border: 1px solid var(--app-border);
+            border-radius: var(--app-radius);
+            background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface-2) 82%, transparent), var(--app-surface));
+            padding: 14px;
+        }
+
+        .selected-color-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .selected-color-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--app-text-bright);
+        }
+
+        .selected-color-header p {
+            font-size: 12px;
+            color: var(--app-text-dim);
+            margin-top: 2px;
+        }
+
+        .selected-color-hex {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--app-text-bright);
+            user-select: all;
+        }
+
+        .selected-color-tools {
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 12px;
+            align-items: start;
+        }
+
+        .selected-color-picker {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .selected-color-picker input[type="color"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 72px;
+            height: 72px;
+            border-radius: 14px;
+            border: 2px solid var(--app-border);
+            padding: 0;
+            overflow: hidden;
+            background: transparent;
+            cursor: pointer;
+            transition: border-color var(--app-transition), box-shadow var(--app-transition);
+        }
+
+        .selected-color-picker input[type="color"]:hover,
+        .selected-color-picker input[type="color"]:focus {
+            border-color: var(--app-accent);
+            box-shadow: 0 0 0 4px var(--app-accent-glow);
+            outline: none;
+        }
+
+        .selected-color-picker input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        .selected-color-picker input[type="color"]::-webkit-color-swatch,
+        .selected-color-picker input[type="color"]::-moz-color-swatch {
+            border: none;
+            border-radius: 12px;
+        }
+
+        .slider-stack {
+            display: grid;
+            gap: 8px;
+        }
+
+        .slider-row {
+            display: grid;
+            grid-template-columns: 52px 1fr 42px;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .slider-row label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            color: var(--app-text-dim);
+        }
+
+        .slider-row output {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-align: right;
+            color: var(--app-text);
+        }
+
+        .slider-row input[type="range"] {
+            width: 100%;
+            accent-color: var(--app-accent);
+        }
+
+        .candidate-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .candidate-header h3 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: var(--app-text-dim);
+        }
+
+        .candidate-help {
+            font-size: 11px;
+            color: var(--app-text-dim);
+            text-align: right;
+        }
+
+        .candidate-grid {
+            display: grid;
+            grid-template-columns: repeat(9, minmax(0, 1fr));
+            gap: 6px;
+        }
+
+        .candidate-cell {
+            position: relative;
+            border: 1px solid var(--app-border);
+            border-radius: 10px;
+            min-height: 34px;
+            cursor: pointer;
+            transition: transform var(--app-transition), border-color var(--app-transition), box-shadow var(--app-transition);
+            overflow: hidden;
+        }
+
+        .candidate-cell:hover {
+            transform: translateY(-1px);
+            border-color: var(--app-accent);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+        }
+
+        .candidate-cell.is-center {
+            border-color: var(--app-accent);
+            box-shadow: inset 0 0 0 2px var(--app-accent-glow);
+        }
+
+        .candidate-cell-label {
+            position: absolute;
+            inset: auto 6px 6px 6px;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.88);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity var(--app-transition);
+        }
+
+        .candidate-cell:hover .candidate-cell-label,
+        .candidate-cell.is-center .candidate-cell-label {
+            opacity: 1;
+        }
+
+        .candidate-grid.locked .candidate-cell {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .save-hint {
+            margin-top: 2px;
+            font-size: 12px;
+            color: var(--app-text-dim);
+        }
+
+        @media (max-width: 640px) {
+            .palette-top-row {
+                grid-template-columns: 1fr;
+            }
+
+            .base-slot-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .selected-color-tools {
+                grid-template-columns: 1fr;
+            }
+
+            .selected-color-picker {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .candidate-grid {
+                gap: 6px;
+            }
+
+            .candidate-cell {
+                min-height: 34px;
+            }
         }
 
         /* ═══════════════════════════════════════════
@@ -339,9 +625,12 @@
         .download-bar {
             padding: 16px 20px;
             border-top: 1px solid var(--app-border);
+            display: grid;
+            gap: 10px;
         }
 
-        .btn-download {
+        .btn-download,
+        .btn-save {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -361,7 +650,8 @@
             overflow: hidden;
         }
 
-        .btn-download::before {
+        .btn-download::before,
+        .btn-save::before {
             content: '';
             position: absolute;
             inset: 0;
@@ -370,20 +660,24 @@
             transition: opacity var(--app-transition);
         }
 
-        .btn-download:hover {
+        .btn-download:hover,
+        .btn-save:hover {
             transform: translateY(-1px);
             box-shadow: 0 8px 25px var(--app-accent-glow);
         }
 
-        .btn-download:hover::before {
+        .btn-download:hover::before,
+        .btn-save:hover::before {
             opacity: 1;
         }
 
-        .btn-download:active {
+        .btn-download:active,
+        .btn-save:active {
             transform: translateY(0);
         }
 
-        .btn-download svg {
+        .btn-download svg,
+        .btn-save svg {
             width: 16px;
             height: 16px;
             flex-shrink: 0;
@@ -393,16 +687,26 @@
             background: linear-gradient(135deg, #059669, #10b981);
         }
 
+        .btn-save {
+            background: linear-gradient(135deg, #25324a, #344765);
+        }
+
+        .btn-save.saved {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+        }
+
         /* ═══════════════════════════════════════════
            Right Panel — Preview
            ═══════════════════════════════════════════ */
         .preview-container {
             position: sticky;
             top: 20px;
+            max-width: 100%;
+            margin-left: auto;
         }
 
         .preview-body {
-            padding: 24px;
+            padding: 14px;
         }
 
         /* ──── Preview Window (matches repo structure) ──── */
@@ -444,10 +748,10 @@
         }
 
         .preview-body pre {
-            padding: 25px;
+            padding: 14px;
             margin: 0;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 11px;
+            line-height: 1.45;
             overflow-x: auto;
             font-family: var(--font-mono);
             color: var(--base05);
@@ -505,7 +809,7 @@
         .swatch-row {
             display: flex;
             gap: 0;
-            margin-top: 20px;
+            margin-top: 14px;
             border-radius: var(--app-radius-sm);
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -732,6 +1036,88 @@
         <div class="controls-column">
             <div class="panel">
                 <div class="panel-header">
+                    <h2>Palette</h2>
+                    <button class="btn-randomize" id="btn-randomize" title="Generate random palette">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                        Randomize
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div class="palette-workbench">
+                        <div class="palette-top-row">
+                            <div class="base-slot-grid" id="base-slot-grid">
+                                <!-- JS-generated -->
+                            </div>
+
+                            <section class="selected-color-panel">
+                                <div class="selected-color-header">
+                                    <div>
+                                        <h3 id="selected-color-title">base08</h3>
+                                        <p id="selected-color-role">Variables</p>
+                                    </div>
+                                    <span class="selected-color-hex" id="selected-color-hex">#AB4642</span>
+                                </div>
+
+                                <div class="selected-color-tools">
+                                    <div class="selected-color-picker">
+                                        <input type="color" id="selected-color-picker" aria-label="Selected base color">
+                                    </div>
+
+                                    <div class="slider-stack">
+                                        <div class="slider-row">
+                                            <label for="slider-r">Red</label>
+                                            <input type="range" id="slider-r" min="0" max="255">
+                                            <output id="slider-r-value">0</output>
+                                        </div>
+                                        <div class="slider-row">
+                                            <label for="slider-g">Green</label>
+                                            <input type="range" id="slider-g" min="0" max="255">
+                                            <output id="slider-g-value">0</output>
+                                        </div>
+                                        <div class="slider-row">
+                                            <label for="slider-b">Blue</label>
+                                            <input type="range" id="slider-b" min="0" max="255">
+                                            <output id="slider-b-value">0</output>
+                                        </div>
+                                        <div class="slider-row">
+                                            <label for="slider-saturation">Saturation</label>
+                                            <input type="range" id="slider-saturation" min="0" max="100">
+                                            <output id="slider-saturation-value">0%</output>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <section>
+                            <div class="candidate-header">
+                                <h3>Choose A Color</h3>
+                                <p class="candidate-help" id="candidate-help">Middle column is the selected base. Outer columns blend toward neighboring bases.</p>
+                            </div>
+                            <div class="candidate-grid" id="candidate-grid">
+                                <!-- JS-generated -->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="download-bar">
+                    <button class="btn-download" id="btn-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download Theme
+                    </button>
+                    <button class="btn-save" id="btn-save-repo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        Save Theme To Repo
+                    </button>
+                    <p class="save-hint">Pick your repo's <code>themes</code> folder. The save flow creates a <code>slug/</code> directory with dark and light YAML files.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ════════ RIGHT: Preview ════════ -->
+        <div class="preview-column">
+            <div class="panel">
+                <div class="panel-header">
                     <h2>Theme Info</h2>
                 </div>
                 <div class="panel-body">
@@ -762,30 +1148,6 @@
                 </div>
             </div>
 
-            <div class="panel" style="margin-top: 16px;">
-                <div class="panel-header">
-                    <h2>Palette</h2>
-                    <button class="btn-randomize" id="btn-randomize" title="Generate random palette">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-                        Randomize
-                    </button>
-                </div>
-                <div class="panel-body">
-                    <div class="color-grid" id="color-grid">
-                        <!-- JS-generated -->
-                    </div>
-                </div>
-                <div class="download-bar">
-                    <button class="btn-download" id="btn-download">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Download Theme
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ════════ RIGHT: Preview ════════ -->
-        <div class="preview-column">
             <div class="panel preview-container" id="preview-panel">
                 <div class="panel-header">
                     <h2>Live Preview</h2>
@@ -841,7 +1203,7 @@
         </a>
     </footer>
 
-    <div class="toast" id="toast">✓ Theme downloaded successfully!</div>
+    <div class="toast" id="toast">Theme saved.</div>
 
     <script>
         /* ═══════════════════════════════════════════
@@ -885,83 +1247,521 @@
            ═══════════════════════════════════════════ */
         const palette = { ...DEFAULT_DARK };
         let currentVariant = 'dark';
-        const lockedColors = {}; // Track locked keys
+        let selectedBaseKey = 'base08';
+        const lockedColors = {};
+        const baseHueMemory = {};
 
         /* ═══════════════════════════════════════════
            DOM Refs
            ═══════════════════════════════════════════ */
-        const colorGrid = document.getElementById('color-grid');
+        const baseSlotGrid = document.getElementById('base-slot-grid');
+        const candidateGrid = document.getElementById('candidate-grid');
         const swatchRow = document.getElementById('swatch-row');
         const previewPanel = document.getElementById('preview-panel');
         const btnDownload = document.getElementById('btn-download');
+        const btnSaveRepo = document.getElementById('btn-save-repo');
         const btnRandomize = document.getElementById('btn-randomize');
         const toast = document.getElementById('toast');
         const variantToggle = document.getElementById('theme-variant-toggle');
         const labelDark = document.getElementById('label-dark');
         const labelLight = document.getElementById('label-light');
+        const selectedColorTitle = document.getElementById('selected-color-title');
+        const selectedColorRole = document.getElementById('selected-color-role');
+        const selectedColorHex = document.getElementById('selected-color-hex');
+        const selectedColorPicker = document.getElementById('selected-color-picker');
+        const sliderR = document.getElementById('slider-r');
+        const sliderG = document.getElementById('slider-g');
+        const sliderB = document.getElementById('slider-b');
+        const sliderSaturation = document.getElementById('slider-saturation');
+        const sliderRValue = document.getElementById('slider-r-value');
+        const sliderGValue = document.getElementById('slider-g-value');
+        const sliderBValue = document.getElementById('slider-b-value');
+        const sliderSaturationValue = document.getElementById('slider-saturation-value');
+        const candidateHelp = document.getElementById('candidate-help');
 
         /* ═══════════════════════════════════════════
-           Build Color Grid
+           Color Helpers
            ═══════════════════════════════════════════ */
-        function buildColorGrid() {
-            colorGrid.innerHTML = '';
-            swatchRow.innerHTML = '';
+        function clamp(value, min, max) {
+            return Math.min(max, Math.max(min, value));
+        }
 
-            BASE_KEYS.forEach(key => {
-                // Color cell
-                const cell = document.createElement('div');
-                cell.className = 'color-cell';
+        function componentToHex(value) {
+            return clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0');
+        }
 
-                const label = document.createElement('span');
-                label.className = 'color-label';
-                label.textContent = key;
+        function rgbToHex(r, g, b) {
+            return `#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
+        }
 
-                const role = document.createElement('span');
-                role.className = 'color-role';
-                role.textContent = BASE_ROLES[key];
+        function hexToRgb(hex) {
+            const value = hex.replace('#', '');
+            return {
+                r: parseInt(value.slice(0, 2), 16),
+                g: parseInt(value.slice(2, 4), 16),
+                b: parseInt(value.slice(4, 6), 16)
+            };
+        }
 
-                const input = document.createElement('input');
-                input.type = 'color';
-                input.id = `picker-${key}`;
-                input.value = palette[key];
+        function getRelativeLuminance(hex) {
+            const { r, g, b } = hexToRgb(hex);
+            const toLinear = (value) => {
+                const normalized = value / 255;
+                return normalized <= 0.03928
+                    ? normalized / 12.92
+                    : ((normalized + 0.055) / 1.055) ** 2.4;
+            };
 
-                const hex = document.createElement('span');
-                hex.className = 'hex-display';
-                hex.id = `hex-${key}`;
-                hex.textContent = palette[key].toUpperCase();
+            const red = toLinear(r);
+            const green = toLinear(g);
+            const blue = toLinear(b);
+            return (0.2126 * red) + (0.7152 * green) + (0.0722 * blue);
+        }
 
-                // Lock toggle
-                const lockBtn = document.createElement('button');
-                lockBtn.className = 'lock-toggle';
-                if (lockedColors[key]) lockBtn.classList.add('active');
-                lockBtn.title = 'Lock color';
-                lockBtn.innerHTML = `
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
+        function getSlotTone(hex) {
+            const luminance = getRelativeLuminance(hex);
+            const isLight = luminance > 0.45;
+            return {
+                text: isLight ? 'rgba(15, 23, 42, 0.92)' : 'rgba(255, 255, 255, 0.96)',
+                muted: isLight ? 'rgba(15, 23, 42, 0.68)' : 'rgba(255, 255, 255, 0.78)',
+                pillText: isLight ? '#0f172a' : '#ffffff',
+                pillBg: isLight ? 'rgba(255, 255, 255, 0.68)' : 'rgba(0, 0, 0, 0.38)',
+                gradient: isLight
+                    ? 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.28) 28%, rgba(255, 255, 255, 0.84) 100%)'
+                    : 'linear-gradient(180deg, rgba(8, 10, 14, 0) 0%, rgba(8, 10, 14, 0.42) 28%, rgba(8, 10, 14, 0.86) 100%)'
+            };
+        }
+
+        function rgbToHsl(r, g, b) {
+            const red = r / 255;
+            const green = g / 255;
+            const blue = b / 255;
+            const max = Math.max(red, green, blue);
+            const min = Math.min(red, green, blue);
+            const delta = max - min;
+            let h = 0;
+            let s = 0;
+            const l = (max + min) / 2;
+
+            if (delta !== 0) {
+                s = delta / (1 - Math.abs(2 * l - 1));
+                switch (max) {
+                    case red:
+                        h = 60 * (((green - blue) / delta) % 6);
+                        break;
+                    case green:
+                        h = 60 * (((blue - red) / delta) + 2);
+                        break;
+                    default:
+                        h = 60 * (((red - green) / delta) + 4);
+                        break;
+                }
+            }
+
+            if (h < 0) h += 360;
+            return {
+                h,
+                s: s * 100,
+                l: l * 100
+            };
+        }
+
+        function hslToRgb(h, s, l) {
+            const hue = ((h % 360) + 360) % 360;
+            const sat = clamp(s, 0, 100) / 100;
+            const light = clamp(l, 0, 100) / 100;
+            const chroma = (1 - Math.abs(2 * light - 1)) * sat;
+            const x = chroma * (1 - Math.abs((hue / 60) % 2 - 1));
+            const match = light - chroma / 2;
+            let red = 0;
+            let green = 0;
+            let blue = 0;
+
+            if (hue < 60) {
+                red = chroma;
+                green = x;
+            } else if (hue < 120) {
+                red = x;
+                green = chroma;
+            } else if (hue < 180) {
+                green = chroma;
+                blue = x;
+            } else if (hue < 240) {
+                green = x;
+                blue = chroma;
+            } else if (hue < 300) {
+                red = x;
+                blue = chroma;
+            } else {
+                red = chroma;
+                blue = x;
+            }
+
+            return {
+                r: Math.round((red + match) * 255),
+                g: Math.round((green + match) * 255),
+                b: Math.round((blue + match) * 255)
+            };
+        }
+
+        function hexToHsl(hex) {
+            const { r, g, b } = hexToRgb(hex);
+            return rgbToHsl(r, g, b);
+        }
+
+        function hslToHex(h, s, l) {
+            const { r, g, b } = hslToRgb(h, s, l);
+            return rgbToHex(r, g, b);
+        }
+
+        function rgbToHsv(r, g, b) {
+            const red = r / 255;
+            const green = g / 255;
+            const blue = b / 255;
+            const max = Math.max(red, green, blue);
+            const min = Math.min(red, green, blue);
+            const delta = max - min;
+            let h = 0;
+
+            if (delta !== 0) {
+                switch (max) {
+                    case red:
+                        h = 60 * (((green - blue) / delta) % 6);
+                        break;
+                    case green:
+                        h = 60 * (((blue - red) / delta) + 2);
+                        break;
+                    default:
+                        h = 60 * (((red - green) / delta) + 4);
+                        break;
+                }
+            }
+
+            if (h < 0) h += 360;
+            return {
+                h,
+                s: max === 0 ? 0 : (delta / max) * 100,
+                v: max * 100
+            };
+        }
+
+        function hsvToRgb(h, s, v) {
+            const hue = wrapHue(h);
+            const sat = clamp(s, 0, 100) / 100;
+            const value = clamp(v, 0, 100) / 100;
+            const chroma = value * sat;
+            const x = chroma * (1 - Math.abs((hue / 60) % 2 - 1));
+            const match = value - chroma;
+            let red = 0;
+            let green = 0;
+            let blue = 0;
+
+            if (hue < 60) {
+                red = chroma;
+                green = x;
+            } else if (hue < 120) {
+                red = x;
+                green = chroma;
+            } else if (hue < 180) {
+                green = chroma;
+                blue = x;
+            } else if (hue < 240) {
+                green = x;
+                blue = chroma;
+            } else if (hue < 300) {
+                red = x;
+                blue = chroma;
+            } else {
+                red = chroma;
+                blue = x;
+            }
+
+            return {
+                r: Math.round((red + match) * 255),
+                g: Math.round((green + match) * 255),
+                b: Math.round((blue + match) * 255)
+            };
+        }
+
+        function hexToHsv(hex) {
+            const { r, g, b } = hexToRgb(hex);
+            return rgbToHsv(r, g, b);
+        }
+
+        function hsvToHex(h, s, v) {
+            const { r, g, b } = hsvToRgb(h, s, v);
+            return rgbToHex(r, g, b);
+        }
+
+        function mixHex(colorA, colorB, amount) {
+            const start = hexToRgb(colorA);
+            const end = hexToRgb(colorB);
+            return rgbToHex(
+                start.r + (end.r - start.r) * amount,
+                start.g + (end.g - start.g) * amount,
+                start.b + (end.b - start.b) * amount
+            );
+        }
+
+        function shiftSaturation(hex, saturation) {
+            const { h, s, v } = hexToHsv(hex);
+            const rememberedHue = baseHueMemory[selectedBaseKey];
+            const hue = s < 1 && Number.isFinite(rememberedHue) ? rememberedHue : h;
+            return hsvToHex(hue, saturation, v);
+        }
+
+        function tweakLightness(hex, amount) {
+            const { h, s, l } = hexToHsl(hex);
+            return hslToHex(h, s, clamp(l + amount, 0, 100));
+        }
+
+        function wrapHue(hue) {
+            return ((hue % 360) + 360) % 360;
+        }
+
+        function mixHue(hueA, hueB, amount) {
+            const start = wrapHue(hueA);
+            const end = wrapHue(hueB);
+            const delta = ((end - start + 540) % 360) - 180;
+            return wrapHue(start + (delta * amount));
+        }
+
+        function getBaseIndex(key) {
+            return BASE_KEYS.indexOf(key);
+        }
+
+        function isNeutralBase(key) {
+            return getBaseIndex(key) <= 7;
+        }
+
+        /* ═══════════════════════════════════════════
+           Palette Model
+           ═══════════════════════════════════════════ */
+        function setSelectedBase(key) {
+            selectedBaseKey = key;
+            renderPaletteWorkbench();
+        }
+
+        function setBaseColor(key, color) {
+            if (lockedColors[key]) return;
+            palette[key] = color.toUpperCase();
+            const hsv = hexToHsv(palette[key]);
+            if (hsv.s >= 1) {
+                baseHueMemory[key] = hsv.h;
+            }
+            renderPaletteWorkbench();
+            updatePreview();
+        }
+
+        function toggleLock(key) {
+            lockedColors[key] = !lockedColors[key];
+            renderPaletteWorkbench();
+        }
+
+        function getNeighborKey(direction) {
+            const index = BASE_KEYS.indexOf(selectedBaseKey);
+            if (direction < 0) {
+                return BASE_KEYS[Math.max(0, index - 1)];
+            }
+            return BASE_KEYS[Math.min(BASE_KEYS.length - 1, index + 1)];
+        }
+
+        function getBlendAnchors() {
+            const index = getBaseIndex(selectedBaseKey);
+            const leftKey = BASE_KEYS[Math.max(0, index - 1)];
+            const rightKey = BASE_KEYS[Math.min(BASE_KEYS.length - 1, index + 1)];
+            const leftMirrorKey = BASE_KEYS[Math.min(BASE_KEYS.length - 1, index + 2)] || rightKey;
+            const rightMirrorKey = BASE_KEYS[Math.max(0, index - 2)] || leftKey;
+
+            return {
+                left: index === 0 ? palette[leftKey] : palette[leftKey],
+                center: palette[selectedBaseKey],
+                right: index === BASE_KEYS.length - 1 ? palette[rightKey] : palette[rightKey],
+                farLeft: index === 0 ? palette[leftMirrorKey] : palette[leftKey],
+                farRight: index === BASE_KEYS.length - 1 ? palette[rightMirrorKey] : palette[rightKey]
+            };
+        }
+
+        function buildNeutralCandidate(baseColor, row, column) {
+            const { h, s, l } = hexToHsl(baseColor);
+            const lightnessOffsets = [-18, -10, 0, 10, 18];
+            const saturationTargets = [2, 4, Math.max(6, s), Math.max(8, s + 4), Math.max(10, s + 8)];
+            const hueOffset = (column - 4) * 2.2;
+            return hslToHex(
+                wrapHue(h + hueOffset),
+                clamp(saturationTargets[row], 0, 18),
+                clamp(l + lightnessOffsets[row], 2, 98)
+            ).toUpperCase();
+        }
+
+        function buildAccentCandidate(baseColor, row, column, leftColor, rightColor) {
+            const leftHsl = hexToHsl(leftColor);
+            const centerHsl = hexToHsl(baseColor);
+            const rightHsl = hexToHsl(rightColor);
+            const hueBlend = column < 4
+                ? mixHue(leftHsl.h, centerHsl.h, column / 4)
+                : column > 4
+                    ? mixHue(centerHsl.h, rightHsl.h, (column - 4) / 4)
+                    : centerHsl.h;
+            const saturationFactors = [0.72, 0.88, 1, 1.12, 1.24];
+            const lightnessOffsets = [-14, -7, 0, 7, 14];
+            const blendedSat = column < 4
+                ? leftHsl.s + ((centerHsl.s - leftHsl.s) * (column / 4))
+                : column > 4
+                    ? centerHsl.s + ((rightHsl.s - centerHsl.s) * ((column - 4) / 4))
+                    : centerHsl.s;
+            const blendedLight = column < 4
+                ? leftHsl.l + ((centerHsl.l - leftHsl.l) * (column / 4))
+                : column > 4
+                    ? centerHsl.l + ((rightHsl.l - centerHsl.l) * ((column - 4) / 4))
+                    : centerHsl.l;
+
+            return hslToHex(
+                hueBlend,
+                clamp(blendedSat * saturationFactors[row], 20, 100),
+                clamp(blendedLight + lightnessOffsets[row], 8, 92)
+            ).toUpperCase();
+        }
+
+        function buildCandidateColors() {
+            const { left, center, right, farLeft, farRight } = getBlendAnchors();
+            const cells = [];
+            const neutralBase = isNeutralBase(selectedBaseKey);
+
+            for (let row = 0; row < 5; row++) {
+                for (let column = 0; column < 9; column++) {
+                    let baseColor = center;
+                    if (column < 4) {
+                        baseColor = mixHex(farLeft, center, column / 4);
+                    } else if (column > 4) {
+                        baseColor = mixHex(center, farRight, (column - 4) / 4);
+                    }
+
+                    const candidate = neutralBase
+                        ? buildNeutralCandidate(baseColor, row, column)
+                        : buildAccentCandidate(baseColor, row, column, left, right);
+
+                    cells.push({
+                        column,
+                        row,
+                        color: candidate.toUpperCase(),
+                        isCenter: column === 4 && row === 2
+                    });
+                }
+            }
+
+            return cells;
+        }
+
+        function renderBaseSlots() {
+            baseSlotGrid.innerHTML = '';
+
+            BASE_KEYS.forEach((key) => {
+                const card = document.createElement('div');
+                const tone = getSlotTone(palette[key]);
+                card.className = 'base-slot';
+                if (key === selectedBaseKey) card.classList.add('active');
+                if (lockedColors[key]) card.classList.add('locked');
+                card.tabIndex = 0;
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-pressed', String(key === selectedBaseKey));
+                card.style.setProperty('--slot-text', tone.text);
+                card.style.setProperty('--slot-text-muted', tone.muted);
+                card.style.setProperty('--slot-pill-text', tone.pillText);
+                card.style.setProperty('--slot-pill-bg', tone.pillBg);
+                card.style.setProperty('--slot-meta-gradient', tone.gradient);
+
+                const lockLabel = lockedColors[key] ? 'Unlock color' : 'Lock color';
+                card.innerHTML = `
+                    <span class="base-slot-swatch" style="background:${palette[key]}"></span>
+                    <div class="base-slot-meta">
+                        <div class="base-slot-top">
+                            <span class="lock-badge">Locked</span>
+                        </div>
+                        <div class="base-slot-middle">
+                            <span class="base-slot-key">${key}</span>
+                            <span class="base-slot-role">${BASE_ROLES[key]}</span>
+                        </div>
+                        <div class="base-slot-bottom">
+                            <span class="base-slot-hex">${palette[key]}</span>
+                        </div>
+                    </div>
+                    <button type="button" class="lock-toggle ${lockedColors[key] ? 'active' : ''}" aria-pressed="${lockedColors[key] ? 'true' : 'false'}" title="${lockLabel}">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </button>
                 `;
 
-                lockBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    lockedColors[key] = !lockedColors[key];
-                    lockBtn.classList.toggle('active', lockedColors[key]);
+                const selectBase = () => setSelectedBase(key);
+                card.addEventListener('click', selectBase);
+                card.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        selectBase();
+                    }
                 });
-
-                input.addEventListener('input', (e) => {
-                    palette[key] = e.target.value;
-                    hex.textContent = e.target.value.toUpperCase();
-                    updatePreview();
+                card.querySelector('.lock-toggle').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    toggleLock(key);
                 });
+                baseSlotGrid.appendChild(card);
+            });
+        }
 
-                cell.appendChild(label);
-                cell.appendChild(lockBtn);
-                cell.appendChild(input);
-                cell.appendChild(hex);
-                cell.appendChild(role);
-                colorGrid.appendChild(cell);
+        function renderSelectedColorEditor() {
+            const color = palette[selectedBaseKey];
+            const rgb = hexToRgb(color);
+            const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
 
-                // Swatch chip
+            selectedColorTitle.textContent = selectedBaseKey;
+            selectedColorRole.textContent = BASE_ROLES[selectedBaseKey];
+            selectedColorHex.textContent = color;
+            selectedColorPicker.value = color;
+            selectedColorPicker.disabled = !!lockedColors[selectedBaseKey];
+
+            sliderR.value = rgb.r;
+            sliderG.value = rgb.g;
+            sliderB.value = rgb.b;
+            sliderSaturation.value = Math.round(hsv.s);
+            sliderR.disabled = !!lockedColors[selectedBaseKey];
+            sliderG.disabled = !!lockedColors[selectedBaseKey];
+            sliderB.disabled = !!lockedColors[selectedBaseKey];
+            sliderSaturation.disabled = !!lockedColors[selectedBaseKey];
+            sliderRValue.textContent = rgb.r;
+            sliderGValue.textContent = rgb.g;
+            sliderBValue.textContent = rgb.b;
+            sliderSaturationValue.textContent = `${Math.round(hsv.s)}%`;
+        }
+
+        function renderCandidateGrid() {
+            candidateGrid.innerHTML = '';
+            candidateGrid.classList.toggle('locked', !!lockedColors[selectedBaseKey]);
+            if (lockedColors[selectedBaseKey]) {
+                candidateHelp.textContent = `${selectedBaseKey} is locked. Unlock it to apply a suggested color.`;
+            } else if (isNeutralBase(selectedBaseKey)) {
+                candidateHelp.textContent = `${selectedBaseKey} uses a tonal ramp. Left and right columns nudge undertone, rows control depth and contrast.`;
+            } else {
+                candidateHelp.textContent = `Middle column is ${selectedBaseKey}. Left blends toward ${getNeighborKey(-1)}, right blends toward ${getNeighborKey(1)}.`;
+            }
+
+            buildCandidateColors().forEach(({ color, isCenter }) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'candidate-cell';
+                if (isCenter) button.classList.add('is-center');
+                button.style.background = color;
+                button.innerHTML = `<span class="candidate-cell-label">${color}</span>`;
+                button.disabled = !!lockedColors[selectedBaseKey];
+                button.addEventListener('click', () => setBaseColor(selectedBaseKey, color));
+                candidateGrid.appendChild(button);
+            });
+        }
+
+        function renderSwatches() {
+            swatchRow.innerHTML = '';
+            BASE_KEYS.forEach((key) => {
                 const chip = document.createElement('div');
                 chip.className = 'swatch-chip';
                 chip.id = `swatch-${key}`;
@@ -969,6 +1769,13 @@
                 chip.style.backgroundColor = palette[key];
                 swatchRow.appendChild(chip);
             });
+        }
+
+        function renderPaletteWorkbench() {
+            renderBaseSlots();
+            renderSelectedColorEditor();
+            renderCandidateGrid();
+            renderSwatches();
         }
 
         /* ═══════════════════════════════════════════
@@ -998,28 +1805,53 @@
         /* ═══════════════════════════════════════════
            Export YAML
            ═══════════════════════════════════════════ */
-        function exportYAML() {
+        function buildVariantPalette(variant) {
+            const variantPalette = { ...palette };
+            if (variant !== currentVariant) {
+                for (let i = 0; i < 4; i++) {
+                    const keyA = BASE_KEYS[i];
+                    const keyB = BASE_KEYS[7 - i];
+                    const tmp = variantPalette[keyA];
+                    variantPalette[keyA] = variantPalette[keyB];
+                    variantPalette[keyB] = tmp;
+                }
+
+                for (let i = 8; i < BASE_KEYS.length; i++) {
+                    const key = BASE_KEYS[i];
+                    const amount = variant === 'light' ? -10 : 10;
+                    variantPalette[key] = tweakLightness(variantPalette[key], amount).toUpperCase();
+                }
+            }
+            return variantPalette;
+        }
+
+        function buildThemeYaml(variant, variantPalette) {
             const name = document.getElementById('theme-name').value.trim();
             const author = document.getElementById('theme-author').value.trim();
-            const variant = currentVariant;
             const system = document.getElementById('theme-system').value;
-
             const schemeName = name || 'Custom Base16';
-            const slug = slugify(schemeName);
-            const filename = slug ? `${slug}.yaml` : 'custom-base16.yaml';
 
             let yaml = '';
             yaml += `system: "${system}"\n`;
             yaml += `name: "${schemeName}"\n`;
-            yaml += `slug: "${slug}"\n`;
             if (author) yaml += `author: "${author}"\n`;
             yaml += `variant: "${variant}"\n`;
             yaml += `palette:\n`;
 
             BASE_KEYS.forEach(key => {
-                const hexVal = palette[key].replace('#', '').toLowerCase();
+                const hexVal = variantPalette[key].replace('#', '').toUpperCase();
                 yaml += `  ${key}: "${hexVal}"\n`;
             });
+
+            return yaml;
+        }
+
+        function exportYAML() {
+            const name = document.getElementById('theme-name').value.trim();
+            const schemeName = name || 'Custom Base16';
+            const slug = slugify(schemeName);
+            const filename = slug ? `${slug}.yaml` : 'custom-base16.yaml';
+            const yaml = buildThemeYaml(currentVariant, palette);
 
             const blob = new Blob([yaml], { type: 'text/yaml' });
             const url = URL.createObjectURL(blob);
@@ -1037,7 +1869,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 Downloaded!
             `;
-            showToast();
+            showToast('Theme downloaded successfully.');
 
             setTimeout(() => {
                 btnDownload.classList.remove('downloaded');
@@ -1051,26 +1883,34 @@
         /* ═══════════════════════════════════════════
            Toast
            ═══════════════════════════════════════════ */
-        function showToast() {
+        function showToast(message) {
+            toast.textContent = message;
             toast.classList.add('visible');
             setTimeout(() => toast.classList.remove('visible'), 2500);
+        }
+
+        function setSaveButtonLabel(label, saved = false, disabled = false) {
+            btnSaveRepo.classList.toggle('saved', saved);
+            btnSaveRepo.disabled = disabled;
+            btnSaveRepo.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${saved ? '<polyline points="20 6 9 17 4 12"/>' : '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>'}</svg>
+                ${label}
+            `;
+        }
+
+        async function fileExists(directoryHandle, filename) {
+            try {
+                await directoryHandle.getFileHandle(filename, { create: false });
+                return true;
+            } catch (error) {
+                if (error && error.name === 'NotFoundError') return false;
+                throw error;
+            }
         }
 
         /* ═══════════════════════════════════════════
            Randomize — Harmonious palette generation
            ═══════════════════════════════════════════ */
-        function hslToHex(h, s, l) {
-            s /= 100;
-            l /= 100;
-            const a = s * Math.min(l, 1 - l);
-            const f = n => {
-                const k = (n + h / 30) % 12;
-                const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-                return Math.round(255 * color).toString(16).padStart(2, '0');
-            };
-            return `#${f(0)}${f(8)}${f(4)}`;
-        }
-
         function randomize() {
             const hue = Math.random() * 360;
             const isLight = currentVariant === 'light';
@@ -1106,7 +1946,7 @@
                 palette[key] = hslToHex(accentHues[i], sat, light);
             }
 
-            syncPickersFromPalette();
+            renderPaletteWorkbench();
             updatePreview();
         }
 
@@ -1142,28 +1982,103 @@
             labelDark.classList.toggle('active', variant === 'dark');
             labelLight.classList.toggle('active', variant === 'light');
 
-            // Sync pickers and preview
-            syncPickersFromPalette();
+            renderPaletteWorkbench();
             updatePreview();
         }
 
-        function syncPickersFromPalette() {
-            BASE_KEYS.forEach(key => {
-                const picker = document.getElementById(`picker-${key}`);
-                const hex = document.getElementById(`hex-${key}`);
-                if (picker) picker.value = palette[key];
-                if (hex) hex.textContent = palette[key].toUpperCase();
-            });
+        async function saveThemeToRepo() {
+            if (!window.showDirectoryPicker) {
+                showToast('Save to repo needs a browser with File System Access support.');
+                return;
+            }
+
+            const rawName = document.getElementById('theme-name').value.trim();
+            if (!rawName) {
+                showToast('Enter a theme name before saving to the repo.');
+                return;
+            }
+
+            const schemeName = rawName;
+            const slug = slugify(schemeName);
+            if (!slug) {
+                showToast('Theme name must contain letters or numbers so a repo slug can be created.');
+                return;
+            }
+
+            const darkPalette = buildVariantPalette('dark');
+            const lightPalette = buildVariantPalette('light');
+            const darkYaml = buildThemeYaml('dark', darkPalette);
+            const lightYaml = buildThemeYaml('light', lightPalette);
+            const darkFilename = `${slug}-dark.yaml`;
+            const lightFilename = `${slug}-light.yaml`;
+
+            try {
+                setSaveButtonLabel('Saving…', false, true);
+                const rootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+                const themeHandle = await rootHandle.getDirectoryHandle(slug, { create: true });
+                const darkExists = await fileExists(themeHandle, darkFilename);
+                const lightExists = await fileExists(themeHandle, lightFilename);
+
+                if ((darkExists || lightExists) && !window.confirm(`Overwrite existing files in ${slug}/?`)) {
+                    setSaveButtonLabel('Save Theme To Repo');
+                    return;
+                }
+
+                const darkFile = await themeHandle.getFileHandle(darkFilename, { create: true });
+                const lightFile = await themeHandle.getFileHandle(lightFilename, { create: true });
+
+                const darkWriter = await darkFile.createWritable();
+                await darkWriter.write(darkYaml);
+                await darkWriter.close();
+
+                const lightWriter = await lightFile.createWritable();
+                await lightWriter.write(lightYaml);
+                await lightWriter.close();
+
+                setSaveButtonLabel('Saved To Repo', true);
+                showToast(`Saved ${slug}/${darkFilename} and ${slug}/${lightFilename}.`);
+
+                setTimeout(() => {
+                    setSaveButtonLabel('Save Theme To Repo');
+                }, 2200);
+            } catch (error) {
+                if (error && error.name === 'AbortError') {
+                    setSaveButtonLabel('Save Theme To Repo');
+                    return;
+                }
+                setSaveButtonLabel('Save Theme To Repo');
+                showToast('Could not save theme files to the selected folder.');
+            }
         }
 
         /* ═══════════════════════════════════════════
            Init
            ═══════════════════════════════════════════ */
-        buildColorGrid();
+        BASE_KEYS.forEach((key) => {
+            const { h, s } = hexToHsv(palette[key]);
+            baseHueMemory[key] = s < 1 ? 0 : h;
+        });
+        renderPaletteWorkbench();
         updatePreview();
 
         btnDownload.addEventListener('click', exportYAML);
+        btnSaveRepo.addEventListener('click', saveThemeToRepo);
         btnRandomize.addEventListener('click', randomize);
+        selectedColorPicker.addEventListener('input', (event) => {
+            setBaseColor(selectedBaseKey, event.target.value);
+        });
+        sliderR.addEventListener('input', () => {
+            setBaseColor(selectedBaseKey, rgbToHex(sliderR.value, sliderG.value, sliderB.value));
+        });
+        sliderG.addEventListener('input', () => {
+            setBaseColor(selectedBaseKey, rgbToHex(sliderR.value, sliderG.value, sliderB.value));
+        });
+        sliderB.addEventListener('input', () => {
+            setBaseColor(selectedBaseKey, rgbToHex(sliderR.value, sliderG.value, sliderB.value));
+        });
+        sliderSaturation.addEventListener('input', () => {
+            setBaseColor(selectedBaseKey, shiftSaturation(palette[selectedBaseKey], Number(sliderSaturation.value)));
+        });
         variantToggle.addEventListener('change', (e) => {
             setVariant(e.target.checked ? 'light' : 'dark');
         });
